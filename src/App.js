@@ -35,7 +35,7 @@ function App() {
 }
 
 function CharacterInfo(props) {
-    if (props.gender === "Female") {
+    if (props.character.gender === "Female") {
       return <p className="textInfo">{props.character.name} is a {props.character.gender.toLowerCase()} and is a member of the {props.character.species.toLowerCase()} species. She is currently {props.character.status.toLowerCase()}. {props.character.name} comes from {props.character.location.name}. </p>; 
     }
     else{
