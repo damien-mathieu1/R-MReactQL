@@ -72,6 +72,14 @@
   }
 }
 
+/**Media queries pour le format telephone **/
+@media screen and (max-width: 600px) {
+  .containerCharacterBox {
+    width: 70%;
+  }
+}
+
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -95,4 +103,42 @@
   to {
     transform: rotate(360deg);
   }
+}
+/**
+Author Of the title effect : Shireen Taj
+https://codepen.io/TajShireen/pen/ExLWgGb
+**/
+
+:root {
+  --background-color: #282c34;
+  --text-color: hsl(0, 0%, 100%);
+}
+
+.wrapper {
+  display: grid;
+  place-content: center;
+  background-color: var(--background-color);
+  min-height: 5vmin;
+  font-family: "Oswald", sans-serif;
+  font-size: 10vmin;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-color);
+  margin: 5vmin;
+}
+
+.wrapper > div {
+  grid-area: 1/1/-1/-1;
+}
+.top {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 48%, 0% 58%);
+}
+.bottom {
+  clip-path: polygon(0% 60%, 100% 50%, 100% 100%, 0% 100%);
+  color: transparent;
+  background: -webkit-linear-gradient(177deg, #282c34 53%, var(--text-color) 65%);
+  background: linear-gradient(177deg, #282c34 53%, var(--text-color) 65%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  transform: translateX(-0.02em);
 }

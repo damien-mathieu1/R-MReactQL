@@ -18,7 +18,10 @@ function App() {
           <p>Error: {error}</p>
         ) : (
           <div className="container">
-            <h1>Rickypedia</h1>
+            <section class="wrapper">
+              <div class="top">Rickypedia</div>
+              <div class="bottom" aria-hidden="true">Rickypedia</div>
+            </section>
             {data.characters.results.map((character) => {
               return (
                     <Affichage character={character}></Affichage>                    
