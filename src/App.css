@@ -62,7 +62,7 @@
 
 .character-box:hover .character-logo {
   border-radius: 50%;
-  transition: all 0.7s;
+  transition: all 0.7s; 
 }
 
 
@@ -76,6 +76,16 @@
 @media screen and (max-width: 600px) {
   .containerCharacterBox {
     width: 70%;
+  }
+  .character-logo{
+    height: 40vmin;
+    width: 40vmin;
+  }
+  .textInfo{
+    font-size: 6vmin;
+  }
+  .nomCharacter{
+    font-size: 8vmin;
   }
 }
 

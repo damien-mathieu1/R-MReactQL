@@ -51,7 +51,7 @@ class CharacterBox extends React.Component {
           className="character-logo"
           style={{ backgroundImage: `url(${this.character.image})` }}
         ></div>
-        <p>{this.character.name}</p>
+        <p className="nomCharacter">{this.character.name}</p>
       </div>
     );
   }

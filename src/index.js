@@ -14,6 +14,8 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
+document.title = "Rickypedia"
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ApolloProvider client={client}>
