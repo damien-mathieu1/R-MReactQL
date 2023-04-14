@@ -7,6 +7,37 @@
   pointer-events: none;
 }
 
+.container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.containerCharacterBox {
+  width: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+  margin: 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 1s;
+
+}
+
+.containerCharacterBox:hover {
+  box-shadow: 2px 2px 23px 5px rgba(0,0,0,0.53);
+  transition: all 0.5s;
+}
+
+.textInfo{
+  text-align: justify;
+  font-size: calc(5px + 2vmin);
+  padding: 2vmin;
+}
 .character-logo {
   height: 20vmin;
   width: 20vmin;
@@ -14,39 +45,26 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  transition: 0.5s;
+  transition: 0.8s;
 }
 
 .character-box {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: calc(10px + 2vmin);
   color: white;
   padding : 10px;
-  box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
-  border-radius: 10px;
-  margin: 30px;
-  transition: 0.5s;
-  cursor: pointer;
 }
 
-.character-box:hover {
-  transform: scale(1.1);
-  border-radius: 50%;
-  transition: all 0.5s;
-}
+
 
 .character-box:hover .character-logo {
   border-radius: 50%;
-  transition: all 0.5s;
+  transition: all 0.7s;
 }
 
-/**Smooth back to normal scale on character-box**/
-.character-box:hover {
-  transform: scale(1.1);
-  transition: 0.5s;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -63,6 +81,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  width: 100%;
 }
 
 .App-link {
