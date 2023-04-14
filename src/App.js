@@ -71,13 +71,13 @@ function Affichage(props){
 
   useEffect(() => {
     parent.current && autoAnimate(parent.current)
-    Aos.init({duration: 500});
+    Aos.init({duration: 1200});
   }, [parent])
 
   const reveal = () => setShow(!show)
 
     return (
-      <div ref={parent} onClick={reveal} className="containerCharacterBox" data-aos={props.character.id%2===0 ? "slide-right" : "slide-left"}>
+      <div ref={parent} onClick={reveal} className="containerCharacterBox" data-aos={props.character.id%2===0 ? "fade-right" : "fade-left"}>
         <CharacterBox character={props.character}/>
         { show && <CharacterInfo character={props.character}></CharacterInfo> }
       </div>      
