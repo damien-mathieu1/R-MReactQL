@@ -24,7 +24,7 @@ function App() {
             </section>
             {data.characters.results.map((character) => {
               return (
-                    <Affichage character={character}></Affichage>                    
+                <Affichage character={character}></Affichage>                    
               );
             })}
           </div>
@@ -35,7 +35,12 @@ function App() {
 }
 
 function CharacterInfo(props) {
-    return <p className="textInfo">{props.character.name} is a {props.character.gender.toLowerCase()} and is a member of the {props.character.species.toLowerCase()} species. He is currently {props.character.status.toLowerCase()}. {props.character.name} comes from {props.character.location.name}. </p>;
+    if (props.gender === "Female") {
+      return <p className="textInfo">{props.character.name} is a {props.character.gender.toLowerCase()} and is a member of the {props.character.species.toLowerCase()} species. She is currently {props.character.status.toLowerCase()}. {props.character.name} comes from {props.character.location.name}. </p>; 
+    }
+    else{
+      return <p className="textInfo">{props.character.name} is a {props.character.gender.toLowerCase()} and is a member of the {props.character.species.toLowerCase()} species. He is currently {props.character.status.toLowerCase()}. {props.character.name} comes from {props.character.location.name}. </p>;
+    }
 }
 
 class CharacterBox extends React.Component {  
