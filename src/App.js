@@ -5,6 +5,8 @@ import { getAllCharacters } from "./qgl/Query";
 import React from "react";
 import { useState, useRef, useEffect } from 'react'
 import autoAnimate from '@formkit/auto-animate'
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 function App() {
   const { loading, error, data } = useQuery(getAllCharacters);
@@ -24,9 +26,10 @@ function App() {
             </section>
             {data.characters.results.map((character) => {
               return (
-                <Affichage character={character}></Affichage>                    
+                  <Affichage character={character}></Affichage>    
               );
             })}
+
           </div>
         )}
       </header>
@@ -68,16 +71,16 @@ function Affichage(props){
 
   useEffect(() => {
     parent.current && autoAnimate(parent.current)
+    Aos.init({duration: 500});
   }, [parent])
 
   const reveal = () => setShow(!show)
 
     return (
-      <div ref={parent} onClick={reveal} className="containerCharacterBox">
+      <div ref={parent} onClick={reveal} className="containerCharacterBox" data-aos={props.character.id%2===0 ? "slide-right" : "slide-left"}>
         <CharacterBox character={props.character}/>
         { show && <CharacterInfo character={props.character}></CharacterInfo> }
-        
-      </div>
+      </div>      
     )
   
 }
