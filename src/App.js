@@ -9,27 +9,43 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 
 function App() {
-  const { loading, error, data } = useQuery(getAllCharacters);
+  const [page, setPage] = useState(1);
+  const { loading, error, data } = useQuery(getAllCharacters, {
+    variables: { page },
+    fetchPolicy: 'network-only', // Doesn't check cache before making a network request
+    });
+
+  useEffect(() => {
+    // Update the document title using the browser API
+      }, [page]);
 
   return (
     <div className="App">
       <header className="App-header">
+           <section class="wrapper">
+              <div class="top">Rickypedia</div>
+              <div class="bottom" aria-hidden="true">Rickypedia</div>
+            </section>
         {loading ? (
           <img src={logo} className="App-logo" alt="logo" />
         ) : error ? (
           <p>Error: {error}</p>
         ) : (
+          
           <div className="container">
-            <section class="wrapper">
-              <div class="top">Rickypedia</div>
-              <div class="bottom" aria-hidden="true">Rickypedia</div>
-            </section>
             {data.characters.results.map((character) => {
               return (
                   <Affichage character={character}></Affichage>    
               );
             })}
-
+            <div className="footer">
+              <p>Made with ❤️ by MATHIEU Damien © 2023</p>
+              <p>{page===1 ? null : <i class="fa fa-angle-left" onClick={ () => {
+                setPage(page-1);
+              }} ></i>}  {page}/{data.characters.info.pages}  {page===data.characters.info.pages ? null : <i class="fa fa-angle-right" onClick={()=>{
+                setPage(page+1);
+              }}></i>}</p>
+            </div>
           </div>
         )}
       </header>
@@ -77,7 +93,7 @@ function Affichage(props){
   const reveal = () => setShow(!show)
 
     return (
-      <div ref={parent} onClick={reveal} className="containerCharacterBox" data-aos={props.character.id%2===0 ? "fade-right" : "fade-left"}>
+      <div ref={parent} onClick={reveal} className="containerCharacterBox" data-aos={props.character.id%2===0 ? "fade-up" : "fade-up"}>
         <CharacterBox character={props.character}/>
         { show && <CharacterInfo character={props.character}></CharacterInfo> }
       </div>      

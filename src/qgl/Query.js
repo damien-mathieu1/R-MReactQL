@@ -1,8 +1,12 @@
 import { gql } from "@apollo/client";
 
 export const getAllCharacters = gql`
-    query getAllCharacters {
-    characters {
+    query getAllCharacters($page: Int) {
+    characters (page: $page) {
+      info {
+        count
+        pages
+      }
       results {
         gender
         status
