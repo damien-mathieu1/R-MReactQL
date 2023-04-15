@@ -7,6 +7,7 @@ import { useState, useRef, useEffect } from 'react'
 import autoAnimate from '@formkit/auto-animate'
 import Aos from "aos";
 import "aos/dist/aos.css";
+import Popup from 'reactjs-popup';
 
 function App() {
   const [page, setPage] = useState(1);
@@ -18,7 +19,8 @@ function App() {
   useEffect(() => {
     // Update the document title using the browser API
       }, [page]);
-
+    
+      console.log(data);
   return (
     <div className="App">
       <header className="App-header">
@@ -38,13 +40,15 @@ function App() {
                   <Affichage character={character}></Affichage>    
               );
             })}
-            <div className="footer">
-              <p>Made with ❤️ by MATHIEU Damien © 2023</p>
-              <p>{page===1 ? null : <i class="fa fa-angle-left" onClick={ () => {
+            <div className="npPage">
+              <p>{page===1 ? null : <i style={{cursor: "pointer"}} class="fa fa-angle-left" onClick={ () => {
                 setPage(page-1);
-              }} ></i>}  {page}/{data.characters.info.pages}  {page===data.characters.info.pages ? null : <i class="fa fa-angle-right" onClick={()=>{
+              }} ></i>}  {page}/{data.characters.info.pages}  {page===data.characters.info.pages ? null : <i style={{cursor: "pointer"}} class="fa fa-angle-right" onClick={()=>{
                 setPage(page+1);
               }}></i>}</p>
+              <div className="footer">
+                <p>Made with ❤️ by MATHIEU Damien © 2023</p>
+              </div>
             </div>
           </div>
         )}
@@ -55,10 +59,32 @@ function App() {
 
 function CharacterInfo(props) {
     if (props.character.gender === "Female") {
-      return <p className="textInfo">{props.character.name} is a {props.character.gender.toLowerCase()} and is a member of the {props.character.species.toLowerCase()} species. She is currently {props.character.status.toLowerCase()}. {props.character.name} comes from {props.character.location.name}. </p>; 
+      return (
+        <div>
+        <p className="textInfo">{props.character.name} is a {props.character.gender.toLowerCase()} and is a member of the {props.character.species.toLowerCase()} species. She is currently {props.character.status.toLowerCase()}. {props.character.name} comes from {props.character.location.name}.</p>
+        <Popup trigger={<button> Episodes </button>} >
+          <ul>
+            {props.character.episode.map((episode)=>{
+              return <li>{episode.episode} - {episode.name}</li>
+            })}
+          </ul>
+        </Popup>
+        </div>
+      ); 
     }
     else{
-      return <p className="textInfo">{props.character.name} is a {props.character.gender.toLowerCase()} and is a member of the {props.character.species.toLowerCase()} species. He is currently {props.character.status.toLowerCase()}. {props.character.name} comes from {props.character.location.name}. </p>;
+      return (
+        <div>
+        <p className="textInfo">{props.character.name} is a {props.character.gender.toLowerCase()} and is a member of the {props.character.species.toLowerCase()} species. He is currently {props.character.status.toLowerCase()}. {props.character.name} comes from {props.character.location.name}.</p>
+        <Popup trigger={<button> Episodes </button>} >
+          <ul>
+            {props.character.episode.map((episode)=>{
+              return <li>{episode.episode} - {episode.name}</li>
+            })}
+          </ul>
+        </Popup>
+        </div>
+      );
     }
 }
 

@@ -15,6 +15,9 @@ export const getAllCharacters = gql`
         image
         name
         location{name}
+        episode{
+          episode
+          name}
       }
     }
   }
